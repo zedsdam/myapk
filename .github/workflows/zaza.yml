@@ -1,0 +1,32 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - main  # سيتم تنفيذ هذا العمل عند رفع تغييرات إلى الفرع "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # تحديد النظام الأساسي الذي سيعمل عليه بناء التطبيق
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # استخدام الإصدار الأحدث من GitHub Checkout
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3  # إعداد JDK باستخدام الإصدار الأحدث
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Set up Gradle
+        uses: gradle/wrapper-validation-action@v1  # خطوة إضافية للتحقق من إعداد Gradle
+
+      - name: Build APK with Gradle
+        run: ./gradlew assembleDebug  # تجميع ملف APK باستخدام Gradle
+
+      - name: Upload APK as artifact
+        uses: actions/upload-artifact@v3  # تحديث إلى الإصدار الأحدث v3
+        with:
+          name: app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
