@@ -1,0 +1,32 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101010"
+    android:gravity="center">
+
+    <!-- عنوان التطبيق -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="فلاش لايت"
+        android:textSize="28sp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/roboto_bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp" />
+
+    <!-- زر الفلاش -->
+    <ImageButton
+        android:id="@+id/flashButton"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_flashlight"
+        android:tint="@android:color/white"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
